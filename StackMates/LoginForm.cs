@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+
 namespace StackMates
 {
     class LoginForm
@@ -26,40 +27,30 @@ namespace StackMates
         private DatabaseHandler Mysqldata = new DatabaseHandler();
         public TableLayoutPanel RootPanel { get; set; }
         private MainForm b;
-      public  LoginForm(MainForm a)
-        {
-             b = a;
-            InitializeComponent();
 
+        public LoginForm(MainForm a)
+        {
+            b = a;
+            InitializeComponent();
         }
         private void InitializeComponent( )
         {
-           
             CreateLoginForm();
-
-
         }
+
         private void CreateLoginForm()
         {
             RootPanel = new TableLayoutPanel
             {
                 RowCount = 7,
                 Dock = DockStyle.Fill,
-                BackColor = Color.FromArgb(28, 135, 202)
-
-
-
+                BackColor = Color.FromArgb(28, 135, 202),
             };
 
-          TableLayoutPanel  EmptyPanel = new TableLayoutPanel
+            TableLayoutPanel  EmptyPanel = new TableLayoutPanel
             {
-                
                 Dock = DockStyle.Fill,
-
-
-
             };
-
 
             LoginButton = new Button
             {
@@ -74,6 +65,7 @@ namespace StackMates
 
             };
             LoginButton.Click += LoginButton_Click;
+
             Label labelUsername = new Label
             {
                 ForeColor = Color.White,
@@ -104,9 +96,7 @@ namespace StackMates
                 Size = new System.Drawing.Size(300, 80),
                 Font = new Font("Arial", 20, FontStyle.Regular),
                 Anchor = (AnchorStyles.Top),
-               PasswordChar = '*',
-                
-
+                PasswordChar = '*',
             };
             Label RegisterLabel = new Label
             {
@@ -131,13 +121,11 @@ namespace StackMates
             
             RootPanel.Controls.Add(EmptyPanel);
             RootPanel.Controls.Add(labelUsername);
-             RootPanel.Controls.Add(UsernameTxtBox);
+            RootPanel.Controls.Add(UsernameTxtBox);
             RootPanel.Controls.Add(labelPassword);
-           RootPanel.Controls.Add(PasswordTxtBox);
+            RootPanel.Controls.Add(PasswordTxtBox);
             RootPanel.Controls.Add(LoginButton);
             RootPanel.Controls.Add(RegisterLabel);
-
-
         }
 
         private void RegisterLabel_MouseLeave(object sender, EventArgs e)
@@ -149,7 +137,6 @@ namespace StackMates
         private void RegisterLabel_MouseEnter(object sender, EventArgs e)
         {
             Label a = (Label)sender;
-            
             a.ForeColor = Color.Red;
         }
 
@@ -162,19 +149,12 @@ namespace StackMates
             {
                 RowCount = 12,
                 Dock = DockStyle.Fill,
-                BackColor = Color.FromArgb(28, 135, 202)
-
-
-
+                BackColor = Color.FromArgb(28, 135, 202),
             };
            
             TableLayoutPanel EmptyPanel = new TableLayoutPanel
             {
-
                 Dock = DockStyle.Fill,
-
-
-
             };
 
 
@@ -186,11 +166,9 @@ namespace StackMates
                 Size = new System.Drawing.Size(300, 50),
                 Font = new Font("Arial", 20, FontStyle.Regular),
                 Anchor = (AnchorStyles.Top)
-
-
-
             };
             RegisterButton.Click += RegisterButton_Click;
+
             Label labelUsername = new Label
             {
                 ForeColor = Color.White,
@@ -198,7 +176,6 @@ namespace StackMates
                 Size = new System.Drawing.Size(300, 31),
                 Anchor = (AnchorStyles.Top),
                 Font = new Font("Arial", 20, FontStyle.Regular),
-
             };
             NewUserNameTxtBox = new TextBox
             {
@@ -216,14 +193,11 @@ namespace StackMates
                 Anchor = (AnchorStyles.Top),
                 Font = new Font("Arial", 20, FontStyle.Regular),
             };
-           NewNameTxtBox = new TextBox
+            NewNameTxtBox = new TextBox
             {
                 Size = new System.Drawing.Size(300, 80),
                 Font = new Font("Arial", 20, FontStyle.Regular),
                 Anchor = (AnchorStyles.Top),
-             
-
-
             };
             Label labelEmail = new Label
             {
@@ -238,9 +212,6 @@ namespace StackMates
                 Size = new System.Drawing.Size(300, 80),
                 Font = new Font("Arial", 20, FontStyle.Regular),
                 Anchor = (AnchorStyles.Top),
-
-
-
             };
             Label labelPassword = new Label
             {
@@ -255,9 +226,6 @@ namespace StackMates
                 Size = new System.Drawing.Size(300, 80),
                 Font = new Font("Arial", 20, FontStyle.Regular),
                 Anchor = (AnchorStyles.Top),
-
-
-
             };
             Label labelPasswordConfirm = new Label
             {
@@ -268,15 +236,11 @@ namespace StackMates
                 Font = new Font("Arial", 20, FontStyle.Regular),
             };
             NewConfirmPasswordTxtBox =  new TextBox
-             {
+            {
                 Size = new System.Drawing.Size(300, 80),
                 Font = new Font("Arial", 20, FontStyle.Regular),
                 Anchor = (AnchorStyles.Top),
-
-
-
             };
-           
 
             RootPanel.Controls.Add(EmptyPanel);
             RootPanel.Controls.Add(labelUsername);
@@ -292,7 +256,6 @@ namespace StackMates
             RootPanel.Controls.Add(RegisterButton);
             b.Controls.Add(RootPanel);
             b.Height = 700;
-
         }
 
         private void RegisterButton_Click(object sender, EventArgs e)
@@ -310,26 +273,22 @@ namespace StackMates
             {
                 MessageBox.Show("Gick Inte att skapa");
             }
-           
         }
 
         private void RegisterLabel_Click(object sender, EventArgs e)
         {
             CreateRegisterForm();
-
         }
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
            if( Mysqldata.UserLogin(UsernameTxtBox.Text, PasswordTxtBox.Text))
-            {
+           {
                 MessageBox.Show("Välkomen");
-                
-            }
+           }
             else
             {
                 MessageBox.Show("Användaren Finns ej");
-
             }
         }
     }

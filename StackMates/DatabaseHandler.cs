@@ -12,24 +12,20 @@ namespace StackMates
     class DatabaseHandler
     {
         //Properties för Databas Uppkopling.
-       private static MySqlConnection Connector = null;
+        private static MySqlConnection Connector = null;
         private MySqlCommand Querry { get; set; }
         MySqlDataReader Reader { get; set; }
         // END
-     public DatabaseHandler()
+        public DatabaseHandler()
         {
             try
             {
                 GetDBConnection();
-
-
-
             }
             catch(Exception e)
             {
                 System.Windows.Forms.MessageBox.Show(e.ToString());
             }
-
         }
 
 
@@ -66,34 +62,29 @@ namespace StackMates
                 return false;
                
             }
-
         }
 
         public bool UserLogin(string Username, string Password)
         {
-           Conection(true);
+            Conection(true);
             Querry = new MySqlCommand("SELECT UserName,Password FROM user where UserName=@UserName and Password=@Password", Connector);
 
-                Querry.Parameters.AddWithValue("@UserName", Username);
+            Querry.Parameters.AddWithValue("@UserName", Username);
 
-                Querry.Parameters.AddWithValue("@Password", Password);
+            Querry.Parameters.AddWithValue("@Password", Password);
 
-                Reader = Querry.ExecuteReader();
+            Reader = Querry.ExecuteReader();
            
             if (Reader.Read())
-                {
+            {
                 Conection(false);
                 return true;
-                   
-
             }
-                else
-                {
+            else
+            {
                 Conection(false);
                 return false;
-               
             }
-           
         }
 
         private void Conection(bool Isopen)
@@ -106,10 +97,6 @@ namespace StackMates
             {
                 Connector.Close();
             }
-
         }
-
-
-
     }
 }

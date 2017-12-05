@@ -7,7 +7,8 @@ using System.Windows.Forms;
 namespace StackMates
 {
     class Program
-    {    [STAThread]
+    {
+        [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();

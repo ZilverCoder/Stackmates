@@ -163,7 +163,7 @@ namespace StackMates
                 Text = "Register",
                 FlatStyle = FlatStyle.Flat,
                 BackColor = Color.LightGreen,
-                Size = new System.Drawing.Size(300, 50),
+                Size = new System.Drawing.Size(300, 50), 
                 Font = new Font("Arial", 20, FontStyle.Regular),
                 Anchor = (AnchorStyles.Top)
             };
